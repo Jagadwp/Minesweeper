@@ -77,7 +77,7 @@ export class GameApp {
   }
 
   nextMove() {
-    this.rl.question('Enter coordinates (X,Y): ', (input) => {
+    this.rl.question('Enter coordinates (row,column): ', (input) => {
       const [x, y] = InputService.parseCoordinates(input);
 
       if (!this.gameService.isValidMove(x, y)) {
