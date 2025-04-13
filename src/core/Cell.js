@@ -1,4 +1,3 @@
-// Cell.js
 export class Cell {
   constructor() {
     this.isMine = false;
@@ -10,9 +9,9 @@ export class Cell {
     this.isRevealed = true;
   }
 
-  toString() {
+  display() {
     if (!this.isRevealed) return '#';
     if (this.isMine) return '*';
-    return this.adjacentMines === 0 ? ' ' : String(this.adjacentMines);
+    return this.adjacentMines > 0 ? this.adjacentMines.toString() : ' ';
   }
 }

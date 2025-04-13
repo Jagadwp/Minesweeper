@@ -1,5 +1,6 @@
 import { Cell } from './Cell.js';
 
+// Old version use (X,Y) as (vertical,horizontal) position 
 export class Board {
   constructor(size, mineCount) {
     this.size = size;
@@ -18,45 +19,45 @@ export class Board {
   placeMines() {
     let placed = 0;
     while (placed < this.mineCount) {
-      const x = Math.floor(Math.random() * this.size); // horizontal
-      const y = Math.floor(Math.random() * this.size); // vertical
+      const x = Math.floor(Math.random() * this.size);
+      const y = Math.floor(Math.random() * this.size);
 
-      if (!this.cells[y][x].isMine) { // y first
-        this.cells[y][x].isMine = true;
+      if (!this.cells[x][y].isMine) {
+        this.cells[x][y].isMine = true;
         placed++;
       }
     }
   }
 
-  isValidCoord(x, y) {
-    return x >= 0 && x < this.size && y >= 0 && y < this.size;
-  }
-
   calculateAdjacentMines() {
     const dirs = [-1, 0, 1];
 
-    for (let y = 0; y < this.size; y++) {
-      for (let x = 0; x < this.size; x++) {
-        if (this.cells[y][x].isMine) continue;
+    for (let x = 0; x < this.size; x++) {
+      for (let y = 0; y < this.size; y++) {
+        if (this.cells[x][y].isMine) continue;
 
         let count = 0;
         for (let dx of dirs) {
           for (let dy of dirs) {
             const nx = x + dx;
             const ny = y + dy;
-            if (!(dx === 0 && dy === 0) && this.isValidCoord(nx, ny) && this.cells[ny][nx].isMine) {
+            if ((dx || dy) && this.isValidCoord(nx, ny) && this.cells[nx][ny].isMine) {
               count++;
             }
           }
         }
 
-        this.cells[y][x].adjacentMines = count;
+        this.cells[x][y].adjacentMines = count;
       }
     }
   }
 
   getCell(x, y) {
-    return this.isValidCoord(x, y) ? this.cells[y][x] : null;
+    return this.isValidCoord(x, y) ? this.cells[x][y] : null;
+  }
+
+  isValidCoord(x, y) {
+    return x >= 0 && x < this.size && y >= 0 && y < this.size;
   }
 
   revealCell(x, y) {

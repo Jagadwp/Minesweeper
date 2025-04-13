@@ -1,8 +1,13 @@
-// index.js (Entry Point)
-import { GameApp } from './app/GameApp';
+import { GameApp } from './app/GameApp.js';
 
-const size = 5;
-const mines = 5;
+const app = new GameApp();
+app.start();
 
-const game = new GameApp(size, mines);
-game.start();
+
+// Documentation:
+// GameApp – The entry point to glue everything together
+// GameService – Core game logic
+// GameConfig – Configuration data holder
+// Cell – Single cell abstraction
+// Board – Game board logic
+// InputService – Handles and validates user input
