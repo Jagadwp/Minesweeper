@@ -25,6 +25,9 @@ cd Minesweeper
 npm install
 npm start
 ```
+### 🎮 Game Display
+![image](https://github.com/user-attachments/assets/d19ca3c9-a716-42b5-bb3f-abca64120eb8)
+---
 
 ## ⌨️ Input Format
 
