@@ -1,6 +1,8 @@
 # 🧨 Minesweeper Console Game
 
-This is a simple **console-based Minesweeper** game built with JavaScript. It follows clean architecture principles and emphasizes **separation of concerns**, making the codebase clean, testable, and maintainable.
+This is a simple **console-based Minesweeper** game built with **JavaScript**, running on **Node.js**. It follows **clean architecture principles** and emphasizes **separation of concerns**, making the codebase clean, testable, and maintainable.
+
+Unit tests are written using **[Jest](https://jestjs.io/)** to ensure code correctness and reliability.
 
 ---
 
