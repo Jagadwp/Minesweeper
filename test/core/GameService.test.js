@@ -8,8 +8,8 @@ describe('GameService', () => {
 
     // Find mine position
     let minePos;
-    for (let y = 0; y < 3; y++) {
-      for (let x = 0; x < 3; x++) {
+    for (let x = 0; x < 3; x++) {
+      for (let y = 0; y < 3; y++) {
         if (board.getCell(x, y).isMine) {
           minePos = [x, y];
         }
@@ -26,13 +26,15 @@ describe('GameService', () => {
 
     // Find not mine cell
     let safePos;
-    for (let y = 0; y < 3; y++) {
-      for (let x = 0; x < 3; x++) {
-        if (!board.getCell(x, y).isMine) {
+    for (let x = 0; x < 3; x++) {
+      for (let y = 0; y < 3; y++) {
+        const cell = board.getCell(x, y);
+        if (!cell.isMine && cell.adjacentMines > 0) {
           safePos = [x, y];
           break;
         }
       }
+      if (safePos) break;
     }
 
     game.playTurn(...safePos);
